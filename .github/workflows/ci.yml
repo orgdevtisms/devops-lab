@@ -63,4 +63,4 @@ jobs:
 
       - name: Atualizar Stack no Portainer
         run: |
-          curl -fsS -X POST "${{ secrets.PORTAINER_WEBHOOK }}"
+          curl -kfsS -X POST "${{ secrets.PORTAINER_WEBHOOK }}"
