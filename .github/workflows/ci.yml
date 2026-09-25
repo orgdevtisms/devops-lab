@@ -1,93 +1,66 @@
-name: CI/CD - DevOps Lab
+name: CI/CD - Web App
 
 on:
   push:
     branches:
       - main
+
   pull_request:
     branches:
       - main
+
   workflow_dispatch:
 
 jobs:
+
   build:
-    name: Build e Deploy DEV
+    name: Build e Teste
     runs-on: self-hosted
 
     steps:
+
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Informações do ambiente
+      - name: Verificar Docker
         run: |
-          echo "===== HOST ====="
-          hostname
-
-          echo "===== USUÁRIO ====="
-          whoami
-
-          echo "===== GIT ====="
-          git --version
-
-          echo "===== DOCKER ====="
           docker --version
+          docker compose version
 
-          echo "===== PHP ====="
-          php8.5 --version
-
-          echo "===== PYTHON ====="
-          python3 --version
-
-          echo "===== NODE ====="
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-          node --version
-
-          echo "===== ANSIBLE ====="
-          ansible --version | head -2
-
-      - name: Docker Build
+      - name: Build
         run: |
-          docker build \
-            -t devops-lab:${{ github.sha }} \
-            -t devops-lab:dev \
-            .
+          docker build -t web-app:test .
 
-      - name: Testar imagem
+      - name: Testar aplicação
         run: |
           docker run -d \
-            --name devops-lab-test \
-            -p 8081:80 \
-            devops-lab:${{ github.sha }}
+            --name web-app-test \
+            -p 18080:80 \
+            web-app:test
 
           sleep 5
 
-          curl --fail http://localhost:8081
+          curl --fail http://localhost:8080
 
       - name: Remover container de teste
         if: always()
         run: |
-          docker rm -f devops-lab-test 2>/dev/null || true
+          docker rm -f web-app-test || true
 
-      - name: Deploy DEV
+      - name: Remover imagem de teste
+        if: always()
         run: |
-          docker rm -f devops-lab-web 2>/dev/null || true
+          docker image rm web-app:test || true
 
-          docker run -d \
-            --name devops-lab-web \
-            --restart unless-stopped \
-            -p 8080:80 \
-            devops-lab:${{ github.sha }}
+  deploy:
+    name: Deploy Portainer
+    needs: build
+    runs-on: self-hosted
 
-      - name: Verificar Deploy DEV
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+
+      - name: Atualizar Stack no Portainer
         run: |
-          sleep 5
-
-          docker ps --filter "name=devops-lab-web"
-
-          curl --fail http://localhost:8080
-
-          echo ""
-          echo "======================================"
-          echo "DEPLOY DEV REALIZADO COM SUCESSO"
-          echo "======================================"
+          curl -fsS -X POST "${{ secrets.PORTAINER_WEBHOOK }}"
