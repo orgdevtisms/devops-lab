@@ -370,14 +370,7 @@ $host_cluster = "proxmox-lab-01";
 
 <div class="wrap">
   <header>
-    <div class="topbar">
-      <div class="brand">
-        <span class="dot"></span>  <span class="host">/ <?php echo htmlspecialchars($host_cluster); ?></span>
-      </div>
-      <div class="status-pill"><span class="pulse"></span> cluster operacional</div>
-    </div>
-
-    <div class="hero">
+        <div class="hero">
       <h1>Do bare metal ao pod: um cluster único sustentando dev, teste e produção.</h1>
       <p class="lede">Infraestrutura própria sobre Proxmox, orquestrada com Kubernetes e segmentada por VLAN, pronta para times trabalharem em paralelo sem pisar uns nos outros.</p>
 
