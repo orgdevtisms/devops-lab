@@ -372,8 +372,7 @@ $host_cluster = "proxmox-lab-01";
   <header>
     <div class="topbar">
       <div class="brand">
-        <span class="dot"></span> Ambiente DevOps
-        <span class="host">/ <?php echo htmlspecialchars($host_cluster); ?></span>
+        <span class="dot"></span>  <span class="host">/ <?php echo htmlspecialchars($host_cluster); ?></span>
       </div>
       <div class="status-pill"><span class="pulse"></span> cluster operacional</div>
     </div>
