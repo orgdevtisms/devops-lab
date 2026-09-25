@@ -1,2 +1,1 @@
-# devops-lab
-repositorio teste 
+CI/CD com GitHub Actions + srvdev
