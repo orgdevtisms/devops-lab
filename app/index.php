@@ -481,6 +481,18 @@ $host_cluster = "proxmox-lab-01";
   </section>
 
  
+  <section id="notas">
+    <div class="section-head">
+      <h2>Notas de operação</h2>
+    </div>
+    <div class="notes">
+     
+      <div class="note-card">
+        <h3>Cargas suportadas</h3>
+        <p>O ambiente foi desenhado para três perfis de carga: aplicações monolíticas, microsserviços e pipelines de dados, convivendo no mesmo cluster.</p>
+      </div>
+    </div>
+  </section>
 
  
 </div>
