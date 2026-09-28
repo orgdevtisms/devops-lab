@@ -40,7 +40,10 @@ jobs:
 
           sleep 5
 
-          curl --fail http://localhost:8080
+          docker ps
+          docker logs web-app-test
+
+          curl --fail http://localhost:18080
 
       - name: Remover container de teste
         if: always()
