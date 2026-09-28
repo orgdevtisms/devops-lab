@@ -488,10 +488,7 @@ $host_cluster = "proxmox-lab-01";
 
  
 
-  <footer>
-    <span>atualizado em <?php echo $ultima_atualizacao; ?></span>
-   
-  </footer>
+ 
 </div>
 
 </body>
