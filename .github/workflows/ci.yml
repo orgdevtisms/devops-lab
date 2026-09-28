@@ -66,4 +66,4 @@ jobs:
 
       - name: Atualizar Stack no Portainer
         run: |
-          curl -kfsS -X POST "https://10.200.201.119:9443/api/stacks/webhooks/ff3d49e5-2b8b-4295-9749-6a6a2e5eeb5b"
+          curl -kfsS -X POST https://10.200.201.119:9443/api/stacks/webhooks/ff3d49e5-2b8b-4295-9749-6a6a2e5eeb5b
