@@ -477,15 +477,10 @@ $host_cluster = "proxmox-lab-01";
         <div class="r-name">Memória<span>alocação entre VMs e nós K8s</span></div>
         <div class="bar-track"><div class="bar-fill" style="width: 52%"></div></div>
         <div class="r-val">512 GB</div>
-      </div>
-      <div class="resource-row">
-        <div class="r-name">Armazenamento<span>volumes persistentes + imagens</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width: 24%"></div></div>
-        <div class="r-val">9 TB livres</div>
-      </div>
-    </div>
+          </div>
   </section>
 
+ 
   <section id="notas">
     <div class="section-head">
       <h2>Notas de operação</h2>
@@ -499,10 +494,7 @@ $host_cluster = "proxmox-lab-01";
     </div>
   </section>
 
-  <footer>
-    <span>atualizado em <?php echo $ultima_atualizacao; ?></span>
-   
-  </footer>
+ 
 </div>
 
 </body>
