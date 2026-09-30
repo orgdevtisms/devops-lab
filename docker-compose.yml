@@ -8,29 +8,4 @@ services:
       - "8080:80"
     restart: unless-stopped
 
-    version: '3.7'
-services:
-  postgres:
-    image: bitnami/postgres:latest
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: dbtest
-    volumes:
-      - postgres_data:/bitnami/postgresql
-
-  redis:
-    image: bitnami/redis:latest
-    environment: 
-	    -ALLOW_EMPTY_PASSWORD=yes
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/bitnami/redis/data
-
-volumes:
-  postgres_data:
-  redis_data:
-
+   
