@@ -1,1 +1,26 @@
+.git
+.github
+.gitignore
+.env
+.env.*
+!.env.example
 
+Dockerfile
+docker-compose.yml
+docker-compose.*.yml
+
+README.md
+
+node_modules
+vendor
+
+*.log
+*.sql
+*.sql.gz
+
+tmp
+cache
+storage/logs
+
+.DS_Store
+Thumbs.db
